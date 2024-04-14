@@ -1,0 +1,4 @@
+#oracledb==2.0.1
+#pyodbc==5.0.1
+#SQLAlchemy==2.0.25
+#apache-airflow-providers-docker==2.0.1
