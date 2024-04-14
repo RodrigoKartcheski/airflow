@@ -1,0 +1,45 @@
+[2024-04-13T01:23:45.034+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: example-docker-operator-dag.print_message manual__2024-04-13T01:23:43.749709+00:00 [queued]>
+[2024-04-13T01:23:45.039+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: example-docker-operator-dag.print_message manual__2024-04-13T01:23:43.749709+00:00 [queued]>
+[2024-04-13T01:23:45.039+0000] {taskinstance.py:2193} INFO - Starting attempt 1 of 1
+[2024-04-13T01:23:45.047+0000] {taskinstance.py:2217} INFO - Executing <Task(DockerOperator): print_message> on 2024-04-13 01:23:43.749709+00:00
+[2024-04-13T01:23:45.050+0000] {standard_task_runner.py:60} INFO - Started process 3136 to run task
+[2024-04-13T01:23:45.052+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'example-docker-operator-dag', 'print_message', 'manual__2024-04-13T01:23:43.749709+00:00', '--job-id', '41', '--raw', '--subdir', 'DAGS_FOLDER/project/dag.py', '--cfg-path', '/tmp/tmpo3y01lj6']
+[2024-04-13T01:23:45.053+0000] {standard_task_runner.py:88} INFO - Job 41: Subtask print_message
+[2024-04-13T01:23:45.082+0000] {task_command.py:423} INFO - Running <TaskInstance: example-docker-operator-dag.print_message manual__2024-04-13T01:23:43.749709+00:00 [running]> on host 54de63e8b577
+[2024-04-13T01:23:45.133+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='example-docker-operator-dag' AIRFLOW_CTX_TASK_ID='print_message' AIRFLOW_CTX_EXECUTION_DATE='2024-04-13T01:23:43.749709+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-04-13T01:23:43.749709+00:00'
+[2024-04-13T01:23:45.146+0000] {docker.py:359} INFO - Starting docker container from image docker-operator-etl:1.0
+[2024-04-13T01:23:45.429+0000] {docker.py:429} INFO - Traceback (most recent call last):
+  File "/app/src/main.py", line 21, in <module>
+    main()
+  File "/app/src/main.py", line 16, in main
+    docker_vars.my_function()
+TypeError: my_function() takes 0 positional arguments but 1 was given
+[2024-04-13T01:23:45.429+0000] {docker.py:429} INFO - iniciando processoamento - MONITORAMENTO_GRAFANA
+I'm 3 running inside a docker Container, but outside of *** schedule container
+DW_HOST: 172.1.12.34\DW
+DW_PORT: 1433
+DW_DATABASE: trusted
+DW_USER: engdados
+DW_PASSWORD: senha_do_dw
+MYSQL_GRAFANA_HOST: 192.25.2.197
+MSYQL_GRAFANA_DB: database
+MYSQL_GRAFANA_PORT: 3306
+MYSQL_GRAFANA_USER: engdados
+MYSQL_GRAFANA_PASSWORD: senha_do_grafana
+[2024-04-13T01:23:45.599+0000] {taskinstance.py:2731} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 444, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 414, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/docker/operators/docker.py", line 502, in execute
+    return self._run_image()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/docker/operators/docker.py", line 376, in _run_image
+    return self._run_image_with_mounts(self.mounts, add_tmp_variable=False)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/docker/operators/docker.py", line 437, in _run_image_with_mounts
+    raise DockerContainerFailedException(f"Docker container failed: {result!r}", logs=log_lines)
+airflow.providers.docker.exceptions.DockerContainerFailedException: Docker container failed: {'StatusCode': 1}
+[2024-04-13T01:23:45.601+0000] {taskinstance.py:1149} INFO - Marking task as FAILED. dag_id=example-docker-operator-dag, task_id=print_message, execution_date=20240413T012343, start_date=20240413T012345, end_date=20240413T012345
+[2024-04-13T01:23:45.614+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 41 for task print_message (Docker container failed: {'StatusCode': 1}; 3136)
+[2024-04-13T01:23:45.625+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2024-04-13T01:23:45.644+0000] {taskinstance.py:3312} INFO - 0 downstream tasks scheduled from follow-on schedule check

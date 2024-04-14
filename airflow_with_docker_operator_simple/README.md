@@ -1,3 +1,6 @@
+#Readme
+
+Este é exemplo simples do uso do Airflow com DockerOperator simples finalidade de entendimento de uso do DockerOperator.
 
 Clonar o repositorio do GitHub
 Fazer o Build do Docker: <docker build . --tag docker-operator-etl:1.0>
